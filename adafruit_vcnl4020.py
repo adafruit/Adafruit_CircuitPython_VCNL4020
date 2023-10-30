@@ -146,7 +146,7 @@ class Adafruit_VCNL4020:
 
     @property
     def _enable(self) -> bool:
-        return self.lux_enabled, self.proximity_enabled, self.selftimed_enabled
+        return self.lux_enabled and self.proximity_enabled and self.selftimed_enabled
 
     @_enable.setter
     def _enable(self, value: bool) -> None:
