@@ -97,7 +97,7 @@ class Adafruit_VCNL4020:
     proximity_enabled = RWBit(_REG_COMMAND, 1)
     """Enable/disable proximity sensor"""
     _proximity_frequency = RWBits(2, _REG_PROX_ADJUST, 3)
-    promixity_on_demand = RWBit(_REG_COMMAND, 3)
+    proximity_on_demand = RWBit(_REG_COMMAND, 3)
     """On-demand setting for proximity measurements"""
     _proximity_rate = RWBits(3, _REG_PROX_RATE, 0)
     proximity_ready = ROBit(_REG_COMMAND, 5)
