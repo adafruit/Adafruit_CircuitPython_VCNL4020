@@ -5,7 +5,9 @@
 # and proximity data from VCNL4020 over I2C
 
 import time
+
 import board
+
 import adafruit_vcnl4020
 
 i2c = board.I2C()
