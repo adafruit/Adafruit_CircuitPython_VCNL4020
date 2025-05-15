@@ -31,14 +31,15 @@ Implementation Notes
 * Adafruit's Register library: https://github.com/adafruit/Adafruit_CircuitPython_Register
 """
 
-from micropython import const
 from adafruit_bus_device.i2c_device import I2CDevice
-from adafruit_register.i2c_struct import Struct, ROUnaryStruct
 from adafruit_register.i2c_bit import ROBit, RWBit
 from adafruit_register.i2c_bits import RWBits
+from adafruit_register.i2c_struct import ROUnaryStruct, Struct
+from micropython import const
 
 try:
-    import typing  # pylint: disable=unused-import
+    import typing
+
     from busio import I2C
 except ImportError:
     pass
@@ -69,7 +70,6 @@ _INT_ALS_READY = const(0x04)
 _INT_PROX_READY = const(0x08)
 
 
-# pylint: disable=too-many-instance-attributes
 class Adafruit_VCNL4020:
     """Adafruit VCNL4020 Proximity/Ambient Light sensor driver"""
 
@@ -236,9 +236,7 @@ class Adafruit_VCNL4020:
     def lux_rate(self, value: int) -> None:
         self._enable = False
         if value not in self._lux_rates:
-            raise ValueError(
-                f"Invalid ambient rate: {value}. Available rates: {self._lux_rates}"
-            )
+            raise ValueError(f"Invalid ambient rate: {value}. Available rates: {self._lux_rates}")
         rate = self._lux_rates.index(value)
         self._lux_rate = rate
         self._enable = True
